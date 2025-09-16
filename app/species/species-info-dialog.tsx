@@ -1,3 +1,5 @@
+"use client";
+
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { Database } from "@/lib/schema";
-import EditSpeciesDialog from "./edit-species-dialog";
 
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
@@ -35,7 +36,6 @@ export default function SpeciesInfoDialog({ species }: { species: Species }) {
             <div>{species.description}</div>
           </DialogDescription>
         </DialogHeader>
-        <EditSpeciesDialog species={species} />
       </DialogContent>
     </Dialog>
   );
