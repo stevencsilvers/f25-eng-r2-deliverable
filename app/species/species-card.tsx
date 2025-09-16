@@ -33,7 +33,7 @@ export default function SpeciesCard({ species, sessionId }: SpeciesCardProps) {
       <h4 className="text-lg font-light italic">{species.common_name}</h4>
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
       <SpeciesInfoDialog species={species} />
-      {sessionId === species.author && <EditSpeciesDialog species={species} />}
+      {sessionId === species.author && <EditSpeciesDialog species={species} userId={sessionId} />}
     </div>
   );
 }

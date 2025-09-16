@@ -9,10 +9,25 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { Database } from "@/lib/schema";
+import SpeciesForm, { FormData } from "./species-form";
 
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
-export default function EditSpeciesDialog({ species }: { species: Species }) {
+type EditSpeciesProps = {
+  species: Species;
+  userId: string;
+};
+
+export default function EditSpeciesDialog({ species, userId }: EditSpeciesProps) {
+  const initialValues: Partial<FormData> = {
+    scientific_name: species.scientific_name,
+    common_name: species.common_name,
+    kingdom: species.kingdom,
+    total_population: species.total_population,
+    image: species.image,
+    description: species.description,
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,11 +35,14 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
           <Icons.settings className="h-6 w-6 scale-150" />
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-h-screen overflow-y-auto sm:max-w-[600px]">
         <DialogHeader>
-          <DialogTitle>Edit Species Information: {species.scientific_name}</DialogTitle>
-          <DialogDescription></DialogDescription>
+          <DialogTitle>Edit Species</DialogTitle>
+          <DialogDescription>
+            Edit information about {species.scientific_name}. Click &quot;Done&quot; below when you&apos;re finished.
+          </DialogDescription>
         </DialogHeader>
+        <SpeciesForm userId={userId} defaultValues={initialValues} species={species} />
       </DialogContent>
     </Dialog>
   );

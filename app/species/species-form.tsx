@@ -74,17 +74,38 @@ export default function SpeciesForm({ userId, defaultValues, species }: SpeciesF
   const onSubmit = async (input: FormData) => {
     // The `input` prop contains data that has already been processed by zod. We can now use it in a supabase query
     const supabase = createBrowserSupabaseClient();
-    const { error } = await supabase.from("species").insert([
-      {
-        author: userId,
-        common_name: input.common_name,
-        description: input.description,
-        kingdom: input.kingdom,
-        scientific_name: input.scientific_name,
-        total_population: input.total_population,
-        image: input.image,
-      },
-    ]);
+
+    let error;
+
+    if (species == null) {
+      // Add new species
+      const result = await supabase.from("species").insert([
+        {
+          author: userId,
+          common_name: input.common_name,
+          description: input.description,
+          kingdom: input.kingdom,
+          scientific_name: input.scientific_name,
+          total_population: input.total_population,
+          image: input.image,
+        },
+      ]);
+      error = result.error;
+    } else {
+      // Edit species
+      const result = await supabase
+        .from("species")
+        .update({
+          common_name: input.common_name,
+          description: input.description,
+          kingdom: input.kingdom,
+          scientific_name: input.scientific_name,
+          total_population: input.total_population,
+          image: input.image,
+        })
+        .eq("id", species.id);
+      error = result.error;
+    }
 
     // Catch and report errors from Supabase and exit the onSubmit function with an early 'return' if an error occurred.
     if (error) {
