@@ -1,3 +1,4 @@
+import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -16,7 +17,9 @@ export default function SpeciesInfoDialog({ species }: { species: Species }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="mt-3 w-full">Learn More</Button>
+        <Button className="mt-3 h-12 w-12 rounded-full transition duration-200 ease-in-out hover:scale-105">
+          <Icons.help className="h-6 w-6 scale-150" />
+        </Button>
       </DialogTrigger>
       <DialogContent className="max-h-screen overflow-y-auto sm:max-w-[600px]">
         <DialogHeader>
