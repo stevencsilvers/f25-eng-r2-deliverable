@@ -5,7 +5,8 @@ export default function Home() {
   return (
     <>
       <TypographyH2>
-        Welcome to T4SG <span className="text-green-400">Biodiversity Hub</span>!
+        Welcome to T4SG <span className="text-green-400">Biodiversity Hub</span>!{" "}
+        <span className="text-base font-light italic text-stone-400"> Steven Silvers Edition</span>
       </TypographyH2>
       <TypographyP>
         Biodiversity Hub is a web-app that allows users to post information about different species and stay educated on
