@@ -10,7 +10,7 @@ import { toast } from "@/components/ui/use-toast";
 import { createBrowserSupabaseClient } from "@/lib/client-utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState, type BaseSyntheticEvent } from "react";
+import { type BaseSyntheticEvent } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -56,13 +56,11 @@ type SpeciesFormProps = {
   userId: string;
   defaultValues: Partial<FormData>;
   species: Species | null;
+  submitCall?: () => void;
 };
 
-export default function SpeciesForm({ userId, defaultValues, species }: SpeciesFormProps) {
+export default function SpeciesForm({ userId, defaultValues, species, submitCall }: SpeciesFormProps) {
   const router = useRouter();
-
-  // Control open/closed state of the dialog
-  const [open, setOpen] = useState<boolean>(false);
 
   // Instantiate form functionality with React Hook Form, passing in the Zod schema (for validation) and default values
   const form = useForm<FormData>({
@@ -76,6 +74,10 @@ export default function SpeciesForm({ userId, defaultValues, species }: SpeciesF
     const supabase = createBrowserSupabaseClient();
 
     let error;
+
+    if (submitCall) {
+      submitCall();
+    }
 
     if (species == null) {
       // Add new species
@@ -121,8 +123,6 @@ export default function SpeciesForm({ userId, defaultValues, species }: SpeciesF
     // Reset form values to the default (empty) values.
     // Practically, this line can be removed because router.refresh() also resets the form. However, we left it as a reminder that you should generally consider form "cleanup" after an add/edit operation.
     form.reset(defaultValues);
-
-    setOpen(false);
 
     // Refresh all server components in the current route. This helps display the newly created species because species are fetched in a server component, species/page.tsx.
     // Refreshing that server component will display the new species from Supabase

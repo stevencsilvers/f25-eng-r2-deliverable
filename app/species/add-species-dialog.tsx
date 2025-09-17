@@ -26,6 +26,10 @@ export default function AddSpeciesDialog({ userId }: { userId: string }) {
   // Control open/closed state of the dialog
   const [open, setOpen] = useState<boolean>(false);
 
+  const onSubmit = () => {
+    setOpen(false);
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -41,7 +45,7 @@ export default function AddSpeciesDialog({ userId }: { userId: string }) {
             Add a new species here. Click &quot;Done&quot; below when you&apos;re finished.
           </DialogDescription>
         </DialogHeader>
-        <SpeciesForm userId={userId} defaultValues={initialValues} species={null} />
+        <SpeciesForm userId={userId} defaultValues={initialValues} species={null} submitCall={onSubmit} />
       </DialogContent>
     </Dialog>
   );
