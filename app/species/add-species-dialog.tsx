@@ -42,7 +42,7 @@ export default function AddSpeciesDialog({ userId }: { userId: string }) {
         <DialogHeader>
           <DialogTitle>Add Species</DialogTitle>
           <DialogDescription>
-            Add a new species here. Click &quot;Done&quot; below when you&apos;re finished.
+            Add a new species here. Click &quot;Add Species&quot; below when you&apos;re finished.
           </DialogDescription>
         </DialogHeader>
         <SpeciesForm userId={userId} defaultValues={initialValues} species={null} submitCall={onSubmit} />

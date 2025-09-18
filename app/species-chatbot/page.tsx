@@ -16,11 +16,15 @@ export default function SpeciesChatbot() {
     }
   };
 
-const handleSubmit = async () => {
-  // TODO: Implement this function
-}
+  const handleSubmit = async () => {
+    // Read input
+    // Disable input while response typing
+    // Call API
+    // Update chat with gpt response
+    // Handle errors
+  };
 
-return (
+  return (
     <>
       <TypographyH2>Species Chatbot</TypographyH2>
       <div className="mt-4 flex gap-4">

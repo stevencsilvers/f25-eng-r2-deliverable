@@ -32,8 +32,8 @@ export default function SpeciesCard({ species, sessionId }: SpeciesCardProps) {
       <h3 className="mt-3 text-2xl font-semibold">{species.scientific_name}</h3>
       <h4 className="text-lg font-light italic">{species.common_name}</h4>
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
-      <div className={"gap 2 mt-auto flex " + (sessionId == species.author ? "justify-between" : "justify-end")}>
-        {sessionId == species.author && <EditSpeciesDialog species={species} userId={sessionId} />}
+      <div className={"gap 2 mt-auto flex " + (sessionId === species.author ? "justify-between" : "justify-end")}>
+        {sessionId === species.author && <EditSpeciesDialog species={species} userId={sessionId} />}
         <SpeciesInfoDialog species={species} />
       </div>
     </div>

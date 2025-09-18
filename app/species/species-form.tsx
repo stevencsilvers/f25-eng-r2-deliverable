@@ -129,7 +129,7 @@ export default function SpeciesForm({ userId, defaultValues, species, submitCall
     router.refresh();
 
     return toast({
-      title: species == null ? "New species added!" : "Edited species!",
+      title: species == null ? "New species added!" : "Changes saved!",
       description:
         species == null ? "Successfully added " + input.scientific_name + "." : "Successfully edited this species!",
     });
@@ -262,7 +262,7 @@ export default function SpeciesForm({ userId, defaultValues, species, submitCall
           />
           <div className="flex">
             <Button type="submit" className="ml-1 mr-1 flex-auto">
-              Done
+              {species ? "Edit Species" : "Add Species"}
             </Button>
             <DialogClose asChild>
               <Button type="button" className="ml-1 mr-1 flex-auto" variant="secondary">

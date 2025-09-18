@@ -1,9 +1,12 @@
 /* eslint-disable */
-// TODO: Import whatever service you decide to use. i.e. `import OpenAI from 'openai';`
+import OpenAI from "openai";
 
 // HINT: You'll want to initialize your service outside of the function definition
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-// TODO: Implement the function below
+// TODO: Implement the function below:
 export async function generateResponse(message: string): Promise<string> {
-  return "hello";
+  return "hello, i am a species chatbot.";
 }

@@ -49,7 +49,8 @@ export default function EditSpeciesDialog({ species, userId }: EditSpeciesProps)
         <DialogHeader>
           <DialogTitle>Edit Species</DialogTitle>
           <DialogDescription>
-            Edit information about {species.scientific_name}. Click &quot;Done&quot; below when you&apos;re finished.
+            Edit information about {species.scientific_name}. Click &quot;Edit Species&quot; below when you&apos;re
+            finished.
           </DialogDescription>
         </DialogHeader>
         <SpeciesForm userId={userId} defaultValues={initialValues} species={species} submitCall={onSubmit} />
