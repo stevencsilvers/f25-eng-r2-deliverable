@@ -41,7 +41,7 @@ export default function EditSpeciesDialog({ species, userId }: EditSpeciesProps)
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="mt-3 h-12 w-12 rounded-full bg-stone-300 transition duration-200 ease-in-out hover:scale-105 hover:bg-stone-300">
+        <Button className="mt-3 h-12 w-12 rounded-full bg-slate-300 transition duration-200 ease-in-out hover:scale-105 hover:bg-slate-300">
           <Icons.settings className="h-6 w-6 scale-150" />
         </Button>
       </DialogTrigger>
