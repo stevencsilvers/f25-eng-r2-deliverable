@@ -1,11 +1,12 @@
 /* eslint-disable */
 "use client";
 import { TypographyH2, TypographyP } from "@/components/ui/typography";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function SpeciesChatbot() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const [message, setMessage] = useState("");
   const [chatLog, setChatLog] = useState<{ role: "user" | "bot"; content: string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,8 +18,13 @@ export default function SpeciesChatbot() {
     }
   };
 
-  // TODO: Make chat box automatically scroll down
-  // TODO: Make it so chatbot's text reveals character by character
+  // Scroll down automatically when chatbot responds
+  useEffect(() => {
+    const container = chatContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [chatLog]);
 
   const handleSubmit = async () => {
     const trimmedMessage = message.trim();
@@ -62,7 +68,10 @@ export default function SpeciesChatbot() {
       {/* Chat UI, ChatBot to be implemented */}
       <div className="mx-auto mt-6">
         {/* Chat history */}
-        <div className="h-[400px] space-y-3 overflow-y-auto rounded-lg border border-border bg-muted p-4">
+        <div
+          ref={chatContainerRef}
+          className="h-[400px] space-y-3 overflow-y-auto rounded-lg border border-border bg-muted p-4"
+        >
           {chatLog.length === 0 ? (
             <p className="text-sm text-muted-foreground">Start chatting about a species!</p>
           ) : (
