@@ -52,12 +52,12 @@ export const speciesSchema = z.object({
 
 export type FormData = z.infer<typeof speciesSchema>;
 
-type SpeciesFormProps = {
+interface SpeciesFormProps {
   userId: string;
   defaultValues: Partial<FormData>;
   species: Species | null;
   submitCall?: () => void;
-};
+}
 
 export default function SpeciesForm({ userId, defaultValues, species, submitCall }: SpeciesFormProps) {
   const router = useRouter();

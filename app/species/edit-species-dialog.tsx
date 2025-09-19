@@ -12,14 +12,15 @@ import {
 } from "@/components/ui/dialog";
 import type { Database } from "@/lib/schema";
 import { useState } from "react";
-import SpeciesForm, { FormData } from "./species-form";
+import type { FormData } from "./species-form";
+import SpeciesForm from "./species-form";
 
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
-type EditSpeciesProps = {
+interface EditSpeciesProps {
   species: Species;
   userId: string;
-};
+}
 
 export default function EditSpeciesDialog({ species, userId }: EditSpeciesProps) {
   // Control open/closed state of the dialog

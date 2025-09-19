@@ -3,10 +3,10 @@
 import type { Database } from "@/lib/schema";
 type User = Database["public"]["Tables"]["profiles"]["Row"];
 
-type UserCardProps = {
+interface UserCardProps {
   user: User;
   sessionId: string;
-};
+}
 
 export default function UserCard({ user, sessionId }: UserCardProps) {
   return (

@@ -6,10 +6,10 @@ import EditSpeciesDialog from "./edit-species-dialog";
 import SpeciesInfoDialog from "./species-info-dialog";
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
-type SpeciesCardProps = {
+interface SpeciesCardProps {
   species: Species;
   sessionId: string;
-};
+}
 
 export default function SpeciesCard({ species, sessionId }: SpeciesCardProps) {
   return (

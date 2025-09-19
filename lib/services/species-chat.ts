@@ -14,7 +14,7 @@ export async function generateResponse(message: string): Promise<string> {
         {
           role: "system",
           content:
-            "You are a helpful assistant who provides information about species (animals, plants, fungi, protists, bactera). Answer questions only related to these topics.",
+            "You are a helpful assistant who provides information about species and animals. Answer questions only related to these topics.",
         },
         {
           role: "user",

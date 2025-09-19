@@ -11,7 +11,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import SpeciesForm, { FormData } from "./species-form";
+import type { FormData } from "./species-form";
+import SpeciesForm from "./species-form";
 
 const initialValues: Partial<FormData> = {
   scientific_name: "",
